@@ -33,6 +33,17 @@ module.exports = function(grunt) {
       ],
       }
     },
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'css/',
+          src: ['*.css', '!*.min.css'],
+          dest: 'css/',
+          ext: '.min.css'
+        }]
+      }
+    },
     responsive_images: {
       dev: {
         options: {
@@ -97,5 +108,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mkdir');
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'responsive_images', ['uglify']]);
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'responsive_images', ['uglify'], 'cssmin']);
 };

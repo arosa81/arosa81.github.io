@@ -39,7 +39,7 @@ bio.display = function () {
   }
 
   //Inject links into work hyperlink elements
-  $("span:contains('" + bio.contacts.github + "')").wrapInner('<a></a>')
+  $("span:contains('" + bio.contacts.github + "')").wrapInner('<a></a>');
   $("a:contains('" + bio.contacts.github + "')").attr({
     href: 'https://github.com/arosa81',
     target: '_blank'
@@ -222,8 +222,8 @@ function inName(formattedName) {
 }
 
 //Appends map and internationalize Button
-  $("#main").append(internationalizeButton);
-  $("#mapDiv").append(googleMap);
+// $("#main").append(internationalizeButton);
+$("#mapDiv").append(googleMap);
 
 bio.display();
 work.display();
