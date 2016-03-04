@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Alex Rosa's Portfolio</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  </head>
+  <body class="container">
+
+    <header class="row">
+      <div class="col-xs-2 col-sm-2 logo">
+        <!-- Reusing the Udacity logo asset from past project -designed by www.udacity.com -->
+        <img src="./images/udacity_logo.svg" class="img-responsive" alt="Udacity logo">
+      </div>
+      <div class="col-xs-8 col-sm-10 text-right text-uppercase header-text-section">
+        <h1 class="header-name">Alex Rosa</h1>
+        <h4 class="header-role">Front-end Ninja</h4>
+      </div>
+      <a id="menu" class="header__menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+        </svg>
+      </a>
+    </header>
+
+    <nav id="drawer" class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#appify">Appify</a></li>
+        <li class="nav__item"><a href="#sunflower">Sunflower</a></li>
+        <li class="nav__item"><a href="#bokeh">Bokeh</a></li>
+      </ul>
+    </nav>
+
+    <main class="row">
+      <section class="main-section">
+
+        <!-- <a href="http://www.freepik.com/free-photos-vectors/business">Business vector designed by Freepik</a> -->
+        <div class="row banner-image">
+          <img src="./images/banner.jpg" class="img-responsive" alt="Banner Image">
+        </div>
+
+        <section class="row featured-work">
+          <div class="col-sm-12 featured-work-title">
+            <h2>Featured Work</h2>
+          </div>
+          <div class="row featured-work-items">
+              <div class="col-sm-4 featured-work-item" id="appify">
+                <!-- <a href="http://www.freepik.com/free-vector/flat-vector-office-elements_715493.htm">Designed by Freepik</a> -->
+                <img src="./images/Work1.jpg" class="img-responsive" alt="Pencil image">
+                <div class="featured-work-item-content text-center">
+                  <h2 class="text-uppercase">Appify</h2>
+                  <p><a href="https://github.com/udacity/Appify/" target="_blank">https://github.com/udacity/Appify/</a></p>
+                </div>
+              </div>
+              <div class="col-sm-4 featured-work-item" id="sunflower">
+                <!-- <a href="http://www.freepik.com/free-vector/flat-vector-office-elements_715493.htm">Designed by Freepik</a> -->
+                <img src="./images/Work2.jpg" class="img-responsive" alt="Laptop image">
+                <div class="featured-work-item-content text-center">
+                  <h2 class="text-uppercase">Sunflower</h2>
+                  <p><a href="https://github.com/udacity/Sunflower/" target="_blank">https://github.com/udacity/Sunflower/</a></p>
+                </div>
+              </div>
+              <div class="col-sm-4 featured-work-item" id="bokeh">
+                <!-- <a href="http://www.freepik.com/free-vector/flat-vector-office-elements_715493.htm">Designed by Freepik</a> -->
+                <img src="./images/Work3.jpg" class="img-responsive" alt="Coffee image">
+                <div class="featured-work-item-content text-center">
+                  <h2 class="text-uppercase">Bokeh</h2>
+                  <p><a href="https://github.com/udacity/Bokeh/" target="_blank">https://github.com/udacity/Bokeh/</a></p>
+                </div>
+              </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="text/javascript" src="bootstrap/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/drawer-Menu.js"></script>
+  </body>
+</html>
