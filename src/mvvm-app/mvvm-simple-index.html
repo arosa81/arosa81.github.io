@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cat Clicker App</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="bg-info">
+        <h3>How to play:</h3>
+        <ol>
+          <li>Select a cat from the drop down list</li>
+          <li>Click anywhere on the image</li>
+          <li>Watch your points tally up :)</li>
+        </ol>
+      </div>
+    </section>
+    <section class="container">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="catDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Select a Cat:
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="catDropdownMenu" data-bind="foreach: catList">
+        </ul>
+      </div>
+    </section>
+    <section class="container jumbotron kittyImages">
+      <div class="col-md-6" id="cat" data-bind="with: currentCat">
+        <h2 data-bind="text: name"></h2>
+        <h3 data-bind="text: level"></h3>
+        <button type="button" class="btn btn-primary">Number of clicks: <span class="badge" data-bind="text: clickCount"></span></button>
+        <img src="" alt="kitten" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}"/>
+        <h3>Nick Names:</h3>
+        <ul data-bind="foreach: nickNames">
+          <li data-bind="text: $data"></li>
+        </ul>
+      </div>
+    </section>
+    <!-- <script>
+      function downloadJSAtOnload() {
+        var element1 = document.createElement("script");
+        var element2 = document.createElement("script");
+        var element3 = document.createElement("script");
+        var element4 = document.createElement("script");
+        element1.src = "https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js";
+        element2.src = "https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js";
+        element3.src = "https://cdn.jsdelivr.net/knockout/3.4.0/knockout.js";
+        element4.src = "./js/mvvm-simple-main.js";
+        document.body.appendChild(element1);
+        document.body.appendChild(element2);
+        document.body.appendChild(element3);
+        var element5 = document.createElement("link"); element5.rel = 'stylesheet';
+        element5.href = "https://cdn.jsdelivr.net/bootstrap/3.3.5/css/bootstrap.min.css";
+        var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(element5, h);
+        document.body.appendChild(element4);
+      }
+      window.onload = downloadJSAtOnload;
+      ko.applyBindings(new ViewModel());
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/knockout/3.4.0/knockout.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="./js/mvvm-simple-main.js"></script>
+  </body>
+</html>

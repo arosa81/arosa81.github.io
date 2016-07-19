@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Quick Java Fix</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300italic'>
+    <link rel="stylesheet" href="./dist/css/main.min.css">
+  </head>
+  <body>
+    <div id="mapSection" data-bind="visible: !app.yelpBindingError()">
+    </div>
+    <div class="flex-container">
+      <div data-bind="visible: app.mapBindingError, text: mapErrorDetails, css: { 'bg-danger': app.mapBindingError }">
+      </div>
+      <div data-bind="visible: app.yelpBindingError, text: yelpErrorDetails, css: { 'bg-danger': app.yelpBindingError }">
+      </div>
+      <div class="left-panel" data-bind="visible: totalNumLocs > 0">
+        <div class="list-search">
+          <input type="text" class="form-control" placeholder="Start typing to filter list results" aria-describedby="list-search" data-bind="value: inputVal, valueUpdate: ['input', 'afterkeydown']">
+        </div>
+        <ul class="left-panel-items" data-bind="foreach: filteredLocations">
+          <li class="left-panel-item" data-bind="click: $parent.selectListMarker, visible: $parent.filteredLocations">
+            <h5 data-bind="text: name"></h5>
+            <h6 data-bind="text: formatted_address"></h6>
+            <img src="" alt="" data-bind="attr: {src: rating_img_url}"/>
+            <span data-bind="text: rating"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/knockout/3.4.0/knockout.js"></script>
+    <script src="./dist/js/main.min.js"></script>
+    <script src="./dist/js/viewmodel.min.js"></script>
+
+    <!-- third party libraries for oauth -->
+    <script src="./dist/lib/url.min.js"></script>
+    <script src="./dist/lib/cryptojs/hmac-sha1.js"></script>
+    <script src="./dist/lib/cryptojs/enc-base64-min.js"></script>
+    <script src="./dist/js/oauth-signature.min.js"></script>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing,geometry?key=AIzaSyBdrrQiOzQAXuUeAixXnMA6TwTw4Y-T0Qs&signed_in=true&callback=app.initMap" onerror="app.googleError()"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+body {
+  max-width: 900px;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  color: #bcbbbb;
+}
+
+/* Header */
+header {
+  border-style: solid;
+  border-width: 0 0 0.2em 0;
+  border-color: #bcbbbb;
+}
+
+.logo {
+  max-width: 150px;
+  min-width: 120px;
+}
+
+/* Keeping the header text always to the right */
+.header-text-section {
+  float: right;
+}
+
+.header-name {
+  font-weight: 100;
+}
+
+.header-role {
+  font-weight: 300;
+}
+
+/* Top Level Navigation */
+.nav {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nav__list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__item {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+  line-height: 24px;
+  padding: 24px;
+  text-transform: uppercase;
+  list-style-type: none;
+}
+
+/* Feature Section */
+.featured-work-title {
+  color: #bcbbbb;
+}
+
+.featured-work-item-content {
+  color: #747704;
+}
+
+svg {
+  width: 32px;
+  fill: #e0e0e0;
+}
+
+.nav {
+  z-index: 10;
+  background-color: #fff;
+  position: absolute;
+  /* This trasform moves the drawer off canvas. */
+  -webkit-transform: translate(-9999px, 0);
+  transform: translate(-9999px, 0);
+  /* Optionally, we animate the drawer. */
+  transition: transform 0.5s ease;
+}
+
+/*fixing format for navigation bar*/
+@media screen and (min-width: 768px) {
+  .header__menu,
+  svg {
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-9999px, 0);
+    transform: translate(-9999px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.5s ease;
+  }
+}
+
+/* fixing format for navigation bar */
+@media screen and (max-width: 767px) {
+  .header-text-section {
+    margin: 0 3em 0 0;
+  }
+
+  .header__menu {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+
+  .open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  .nav__item {
+    display: list-item;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .header__menu {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+}
+
+/*fixing format for navigation button*/
+@media screen and (min-width: 405px) and (max-width: 767px) {
+  .header-text-section{
+    width: 60%;
+  }
+
+  .header-name {
+    font-size: 2em;
+  }
+
+  .header-role {
+    font-size: 1.2em;
+  }
+}
+
+/*fixing format for iphone 4 & 5 and navigation button*/
+@media screen and (max-width: 404px) {
+  .header-text-section {
+    width: 49%;
+  }
+
+  .header-name {
+    font-size: 1.5em;
+  }
+
+  .header-role {
+    font-size: 1em;
+  }
+}
