@@ -1,7 +1,7 @@
 var model = {
   bio: {
     "name": "Alex Rosa",
-    "role": "Web Front End Ninja",
+    "role": "Web Tech Enthusiast",
     "contacts": {
       "mobile": "403.606.0637",
       "email": "alex.j.rosa@gmail.com",
@@ -33,6 +33,12 @@ var model = {
   },
   project: {
     "projects": [
+      {
+        "title": "Quick Java Fix Map App",
+        "dates": "2016",
+        "description": "a single page app that discovers and displays coffee shops near your current location on google maps. It is fully responsive and works well across all your devices",
+        "image": "url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;"
+      },      
       {
         "title": "HSE KPI Reporting Team Site",
         "dates": "2013-2014",

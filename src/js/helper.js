@@ -1,16 +1,5 @@
 /*
-
-This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
-
-Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
-Cameron Pittman
-*/
-
-
-/*
-These are HTML strings. As part of the course, you'll be using JavaScript functions
-replace the %data% placeholder text you see in them.
+This file contains all of the code running in the background that makes resumeBuilder.js possible.
 */
 (function() {
   var HTMLheaderName = '<h1 id="name">%data%</h1>';
@@ -38,10 +27,18 @@ replace the %data% placeholder text you see in them.
   var HTMLworkDescription = '<p><br>%data%</p>';
 
   var HTMLprojectStart = '<div class="project-entry"></div>';
+  var HTMLprojectCardStart = '<div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell--4-col"></div>';
+  var HTMLprojectImage = 'url("%data%") center /cover;';
   var HTMLprojectTitle = '<a href="#">%data%</a>';
+  var HTMLprojectCardTitleContainer = '<div class="mdl-card__title"></div>';
+  var HTMLprojectCardTitle = '<h2 class="mdl-card__title-text">%data%</h2>';
   var HTMLprojectDates = '<div class="date-text">%data%</div>';
   var HTMLprojectDescription = '<p><br>%data%</p>';
-  var HTMLprojectImage = '<img src="%data%">';
+  var HTMLprojectCardDescription = '<div class="mdl-card__supporting-text">%data%</div>';
+  var HTMLprojectCardButtonsContainer = '<div class="mdl-card__actions mdl-card--border"></div>';
+  var HTMLprojectCardButtonsDemo = '<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="%data%" target="_blank"><i class="material-icons orange600">&#xE30F;</i>View Demo</a>';
+  var HTMLprojectCardButtonsGitHubRepo = '<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="%data%" target="_blank"><i class="material-icons orange600">&#xE86F;</i>GitHub Repo</a>';
+  var HTMLprojectCardButtonsLinkedIn = '<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://ca.linkedin.com/in/alexrosawebdev" target="_blank"><i class="material-icons orange600">&#xE87C;</i>LinkedIn</a>';
 
   var HTMLschoolStart = '<div class="education-entry"></div>';
   var HTMLschoolName = '<a href="#">%data%';
@@ -58,6 +55,7 @@ replace the %data% placeholder text you see in them.
 
   var internationalizeButton = '<button>Internationalize</button>';
   var googleMap = '<div id="map"></div>';
+  var map;
 
   window.Helper = {
     HTMLheaderName: HTMLheaderName,
@@ -80,9 +78,16 @@ replace the %data% placeholder text you see in them.
     HTMLworkLocation: HTMLworkLocation,
     HTMLworkDescription: HTMLworkDescription,
     HTMLprojectStart: HTMLprojectStart,
+    HTMLprojectCardStart: HTMLprojectCardStart,
+    HTMLprojectCardTitleContainer: HTMLprojectCardTitleContainer,
     HTMLprojectTitle: HTMLprojectTitle,
+    HTMLprojectCardTitle: HTMLprojectCardTitle,
     HTMLprojectDates: HTMLprojectDates,
     HTMLprojectDescription: HTMLprojectDescription,
+    HTMLprojectCardDescription: HTMLprojectCardDescription,
+    HTMLprojectCardButtonsContainer: HTMLprojectCardButtonsContainer,
+    HTMLprojectCardButtonsDemo: HTMLprojectCardButtonsDemo,
+    HTMLprojectCardButtonsGitHubRepo: HTMLprojectCardButtonsGitHubRepo,
     HTMLprojectImage: HTMLprojectImage,
     HTMLschoolStart: HTMLschoolStart,
     HTMLschoolName: HTMLschoolName,
@@ -95,7 +100,8 @@ replace the %data% placeholder text you see in them.
     HTMLonlineSchool: HTMLonlineSchool,
     HTMLonlineDates: HTMLonlineDates,
     HTMLonlineURL: HTMLonlineURL,
-    googleMap: googleMap
+    googleMap: googleMap,
+    map: map
   };
 })();
 /*
@@ -114,19 +120,15 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
   logClicks(loc.pageX, loc.pageY);
 });
 
 /*
-This is the fun part. Here's where we generate the custom Google Map for the website.
-See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
-var map;    // declares a global map variable
 
 /*
-Start here! initializeMap() is called when page is loaded.
+This function is called when the page is loaded.
 */
 function initializeMap() {
 
@@ -140,7 +142,7 @@ function initializeMap() {
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
-  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+  Helper.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 
   /*
@@ -185,7 +187,7 @@ function initializeMap() {
 
     // marker is an object with additional data about the pin for a single location
     var marker = new google.maps.Marker({
-      map: map,
+      map: Helper.map,
       position: placeData.geometry.location,
       title: name
     });
@@ -200,16 +202,16 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
-      infoWindow.open(map, marker);
+      infoWindow.open(Helper.map, marker);
     });
 
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
     bounds.extend(new google.maps.LatLng(lat, lon));
     // fit the map to the new marker
-    map.fitBounds(bounds);
+    Helper.map.fitBounds(bounds);
     // center the map
-    map.setCenter(bounds.getCenter());
+    Helper.map.setCenter(bounds.getCenter());
   }
 
   /*
@@ -230,7 +232,7 @@ function initializeMap() {
 
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
-    var service = new google.maps.places.PlacesService(map);
+    var service = new google.maps.places.PlacesService(Helper.map);
 
     // Iterates through the array of locations, creates a search object for each location
     for (var place in locations) {
@@ -258,10 +260,6 @@ function initializeMap() {
 
 }
 
-/*
-Uncomment the code below when you're ready to implement a Google Map!
-*/
-
 // Calls the initializeMap() function when the page loads
 window.addEventListener('load', initializeMap);
 
@@ -269,5 +267,5 @@ window.addEventListener('load', initializeMap);
 // and adjust map bounds
 window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-  map.fitBounds(mapBounds);
+  Helper.map.fitBounds(mapBounds);
 });
